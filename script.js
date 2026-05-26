@@ -112,3 +112,59 @@ music.play();
     },1500);
 
 });
+const roleCards =
+document.querySelectorAll(".role-card");
+
+window.addEventListener("scroll", () => {
+
+    const trigger =
+    document.querySelector(".roles-section")
+    .getBoundingClientRect().top;
+
+    if(trigger < window.innerHeight - 350){
+
+        roleCards.forEach((card,index) => {
+
+            setTimeout(() => {
+
+                card.classList.add("show-card");
+
+            }, index * 250);
+
+        });
+
+    }
+
+});
+const hearts =
+document.querySelector(".hearts");
+
+function createHeart(){
+
+    const heart =
+    document.createElement("div");
+
+    heart.classList.add("heart-particle");
+
+    heart.innerHTML = "❤";
+
+    heart.style.left =
+    Math.random() * 100 + "vw";
+
+    heart.style.animationDuration =
+    4 + Math.random() * 6 + "s";
+
+    heart.style.fontSize =
+    10 + Math.random() * 20 + "px";
+
+    hearts.appendChild(heart);
+
+    setTimeout(() => {
+
+        heart.remove();
+
+    },10000);
+
+}
+
+setInterval(createHeart,400);
